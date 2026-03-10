@@ -3,142 +3,550 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>                                                                                                                                                         
     <title>StockVault – Privacy Policy</title>                                                                                                                                                                                      
     <style>
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+      :root {
+        --purple:      #7c3aed;
+        --purple-light:#a78bfa;
+        --purple-glow: #7c3aed44;
+        --bg:          #080b14;
+        --bg2:         #0d1220;
+        --card:        #111827;
+        --border:      #1f2a40;
+        --text:        #e2e8f0;
+        --muted:       #64748b;
+        --accent:      #06b6d4;
+      }
+
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html { scroll-behavior: smooth; }
+
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background: #f5f5f5;
-        color: #1c1b1f;
-        line-height: 1.7;
+        font-family: 'Inter', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        overflow-x: hidden;
       }
+
+      /* ── Animated grid background ── */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(124,58,237,0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(124,58,237,0.04) 1px, transparent 1px);
+        background-size: 48px 48px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* ── Glowing orbs ── */
+      .orb {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(100px);
+        pointer-events: none;
+        z-index: 0;
+        animation: drift 18s ease-in-out infinite alternate;
+      }
+      .orb-1 {
+        width: 500px; height: 500px;
+        background: radial-gradient(circle, #7c3aed22, transparent 70%);
+        top: -150px; left: -100px;
+      }
+      .orb-2 {
+        width: 400px; height: 400px;
+        background: radial-gradient(circle, #06b6d422, transparent 70%);
+        bottom: 100px; right: -80px;
+        animation-delay: -9s;
+      }
+      .orb-3 {
+        width: 300px; height: 300px;
+        background: radial-gradient(circle, #7c3aed18, transparent 70%);
+        top: 50%; left: 50%;
+        animation-delay: -4s;
+      }
+      @keyframes drift {
+        from { transform: translate(0, 0) scale(1); }
+        to   { transform: translate(40px, 30px) scale(1.08); }
+      }
+
+      /* ── Header ── */
       header {
-        background: #4f378b;
-        color: #fff;
-        padding: 40px 24px 32px;
+        position: relative;
+        z-index: 1;
         text-align: center;
+        padding: 80px 24px 60px;
+        background: linear-gradient(180deg, #0d0f1f 0%, transparent 100%);
       }
-      header h1 { font-size: 2rem; letter-spacing: 0.02em; }
-      header p  { margin-top: 6px; opacity: 0.85; font-size: 0.95rem; }
+
+      .logo-ring {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 72px; height: 72px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #7c3aed, #06b6d4);
+        margin-bottom: 24px;
+        box-shadow: 0 0 40px #7c3aed66;
+        animation: pulse-ring 3s ease-in-out infinite;
+      }
+      .logo-ring svg { width: 36px; height: 36px; fill: #fff; }
+      @keyframes pulse-ring {
+        0%, 100% { box-shadow: 0 0 30px #7c3aed55; }
+        50%       { box-shadow: 0 0 60px #7c3aed99, 0 0 100px #7c3aed33; }
+      }
+
+      .badge {
+        display: inline-block;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--purple-light);
+        background: #7c3aed18;
+        border: 1px solid #7c3aed44;
+        padding: 5px 14px;
+        border-radius: 999px;
+        margin-bottom: 16px;
+      }
+
+      header h1 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(2.2rem, 5vw, 3.5rem);
+        font-weight: 700;
+        background: linear-gradient(135deg, #fff 30%, var(--purple-light) 70%, var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 12px;
+        line-height: 1.1;
+      }
+
+      header p {
+        color: var(--muted);
+        font-size: 1rem;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .updated-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 20px;
+        font-size: 0.8rem;
+        color: var(--muted);
+        background: #ffffff08;
+        border: 1px solid var(--border);
+        padding: 5px 14px;
+        border-radius: 999px;
+      }
+      .updated-pill span { color: var(--accent); }
+
+      /* ── Main content ── */
       main {
-        max-width: 780px;
-        margin: 40px auto;
-        background: #fff;
-        border-radius: 12px;
-        padding: 40px 48px;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        position: relative;
+        z-index: 1;
+        max-width: 860px;
+        margin: 0 auto 80px;
+        padding: 0 24px;
       }
-      h2 {
-        font-size: 1.15rem;
-        color: #4f378b;
-        margin: 32px 0 10px;
-        padding-bottom: 6px;
-        border-bottom: 2px solid #ede9f6;
+
+      /* ── Intro card ── */
+      .intro-card {
+        background: linear-gradient(135deg, #7c3aed12, #06b6d408);
+        border: 1px solid #7c3aed33;
+        border-radius: 16px;
+        padding: 28px 32px;
+        margin-bottom: 40px;
+        font-size: 0.96rem;
+        color: #94a3b8;
+        line-height: 1.8;
       }
-      p, li { font-size: 0.97rem; color: #3b3640; }
-      ul { margin: 10px 0 0 20px; }
-      li { margin-bottom: 6px; }
-      a  { color: #4f378b; }
-      .updated {
+
+      /* ── Section cards ── */
+      .section {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 28px 32px;
+        margin-bottom: 16px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+      .section::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 3px; height: 100%;
+        background: linear-gradient(180deg, var(--purple), var(--accent));
+        border-radius: 3px 0 0 3px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .section:hover {
+        border-color: #7c3aed55;
+        box-shadow: 0 4px 32px #7c3aed18;
+      }
+      .section:hover::before { opacity: 1; }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 16px;
+      }
+
+      .icon-box {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px; height: 40px;
+        border-radius: 10px;
+        background: #7c3aed18;
+        border: 1px solid #7c3aed33;
+      }
+      .icon-box svg {
+        width: 18px; height: 18px;
+        stroke: var(--purple-light);
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .section-header h2 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #f1f5f9;
+      }
+
+      .section-num {
+        margin-left: auto;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--purple-light);
+        opacity: 0.5;
+        font-family: 'Space Grotesk', monospace;
+      }
+
+      .section p {
+        font-size: 0.93rem;
+        color: #94a3b8;
+        line-height: 1.8;
+      }
+
+      .section ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .section ul li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.93rem;
+        color: #94a3b8;
+        line-height: 1.7;
+        padding: 5px 0;
+        border-bottom: 1px solid #ffffff06;
+      }
+      .section ul li:last-child { border-bottom: none; }
+      .section ul li::before {
+        content: '';
+        flex-shrink: 0;
+        margin-top: 9px;
+        width: 5px; height: 5px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--purple-light), var(--accent));
+      }
+      strong { color: #e2e8f0; font-weight: 500; }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      a:hover { color: #67e8f9; }
+
+      /* ── Highlight box ── */
+      .highlight {
+        background: #06b6d408;
+        border: 1px solid #06b6d422;
+        border-radius: 10px;
+        padding: 14px 18px;
+        margin-top: 14px;
+        font-size: 0.88rem;
+        color: #7dd3fc;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .highlight svg {
+        flex-shrink: 0;
+        width: 16px; height: 16px;
+        stroke: #06b6d4;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+      }
+
+      /* ── Contact card ── */
+      .contact-card {
+        background: linear-gradient(135deg, #7c3aed18, #06b6d410);
+        border: 1px solid #7c3aed44;
+        border-radius: 16px;
+        padding: 36px 32px;
         text-align: center;
-        font-size: 0.85rem;
-        color: #777;
-        margin-bottom: 28px;
+        margin-top: 32px;
       }
+      .contact-card h2 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #f1f5f9;
+      }
+      .contact-card p { color: var(--muted); font-size: 0.93rem; margin-bottom: 20px; }
+      .contact-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, var(--purple), #6d28d9);
+        color: #fff;
+        padding: 12px 28px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.93rem;
+        transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 24px #7c3aed44;
+      }
+      .contact-btn:hover {
+        opacity: 0.92;
+        transform: translateY(-1px);
+        box-shadow: 0 8px 32px #7c3aed66;
+        color: #fff;
+      }
+      .contact-btn svg {
+        width: 16px; height: 16px;
+        stroke: #fff; fill: none;
+        stroke-width: 2; stroke-linecap: round;
+      }
+
+      /* ── Footer ── */
       footer {
+        position: relative;
+        z-index: 1;
         text-align: center;
-        padding: 24px;
+        padding: 32px 24px 48px;
+        color: var(--muted);
         font-size: 0.82rem;
-        color: #999;
+        border-top: 1px solid var(--border);
       }
+      footer span { color: var(--purple-light); }
+
+      /* ── Fade-in animation ── */
+      .section, .intro-card, .contact-card {
+        opacity: 0;
+        transform: translateY(24px);
+        animation: fadeUp 0.5s ease forwards;
+      }
+      .section:nth-child(1)  { animation-delay: 0.05s; }
+      .section:nth-child(2)  { animation-delay: 0.10s; }
+      .section:nth-child(3)  { animation-delay: 0.15s; }
+      .section:nth-child(4)  { animation-delay: 0.20s; }
+      .section:nth-child(5)  { animation-delay: 0.25s; }
+      .section:nth-child(6)  { animation-delay: 0.30s; }
+      .section:nth-child(7)  { animation-delay: 0.35s; }
+      .section:nth-child(8)  { animation-delay: 0.40s; }
+      .contact-card          { animation-delay: 0.45s; }
+      @keyframes fadeUp {
+        to { opacity: 1; transform: translateY(0); }
+      }
+
       @media (max-width: 600px) {
-        main { margin: 16px; padding: 24px 20px; }
+        header { padding: 60px 20px 40px; }
+        .section, .intro-card, .contact-card { padding: 22px 20px; }
       }
     </style>
   </head>
   <body>
 
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- ── Header ── -->
   <header>
-    <h1>StockVault</h1>
-    <p>Privacy Policy</p>
+    <div class="logo-ring">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 7H4a2 2 0 00-2 2v9a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/>
+        <path d="M16 2H8a2 2 0 00-2 2v3h12V4a2 2 0 00-2-2z" opacity=".6"/>
+      </svg>
+    </div>
+    <div class="badge">Legal Document</div>
+    <h1>Privacy Policy</h1>
+    <p>How StockVault collects, uses, and protects your information.</p>
+    <div class="updated-pill">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      Last updated: <span>March 9, 2026</span>
+    </div>
   </header>
 
+  <!-- ── Content ── -->
   <main>
-    <p class="updated">Last updated: March 9, 2026</p>
 
-    <p>
-      This Privacy Policy describes how StockVault ("we", "our", or "the app") collects,
-      uses, and protects your information when you use our Android application.
-      By using StockVault, you agree to the practices described below.
-    </p>
+    <div class="intro-card">
+      This Privacy Policy describes how <strong>StockVault</strong> collects, uses, and safeguards
+      your information when you use our Android application. By using StockVault, you agree to
+      the practices described in this document. We are committed to protecting your privacy and
+      being fully transparent about our data practices.
+    </div>
 
-    <h2>1. Information We Collect</h2>
-    <ul>
-      <li><strong>Email address</strong> — used to create and authenticate your account.</li>
-      <li><strong>Display name / username</strong> — chosen by you during registration.</li>
-      <li><strong>Inventory data</strong> — item names, quantities, prices, categories, and notes
-          that you enter into the app.</li>
-      <li><strong>Device information</strong> — basic device data collected automatically by
-          Firebase for security and performance purposes.</li>
-    </ul>
+    <!-- 1 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h2>Information We Collect</h2>
+        <span class="section-num">01</span>
+      </div>
+      <ul>
+        <li><strong>Email address</strong> — used to create and authenticate your account securely.</li>
+        <li><strong>Display name / username</strong> — chosen by you during account registration.</li>
+        <li><strong>Inventory data</strong> — item names, quantities, prices, categories, and notes you enter.</li>
+        <li><strong>Device information</strong> — basic device data collected automatically by Firebase for security and performance.</li>
+      </ul>
+    </div>
 
-    <h2>2. How We Use Your Information</h2>
-    <ul>
-      <li>To authenticate you securely and maintain your session.</li>
-      <li>To store and sync your inventory data across devices.</li>
-      <li>To send optional low-stock or expiration notifications you configure.</li>
-      <li>To detect and prevent fraudulent or unauthorized access (via Firebase App Check).</li>
-    </ul>
+    <!-- 2 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h2>How We Use Your Information</h2>
+        <span class="section-num">02</span>
+      </div>
+      <ul>
+        <li>To authenticate you securely and maintain your session.</li>
+        <li>To store and sync your inventory data across devices in real time.</li>
+        <li>To deliver optional low-stock and expiration notifications you configure.</li>
+        <li>To detect and prevent fraudulent or unauthorized access via Firebase App Check.</li>
+      </ul>
+    </div>
 
-    <h2>3. Data Storage &amp; Security</h2>
-    <p>
-      Your data is stored securely in Google Firebase (Firestore). Each user's data is
-      isolated and accessible only by that user. We use Firebase App Check with Play Integrity
-      to ensure only legitimate instances of StockVault can access your data. All data is
-      transmitted over HTTPS.
-    </p>
+    <!-- 3 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        </div>
+        <h2>Data Storage &amp; Security</h2>
+        <span class="section-num">03</span>
+      </div>
+      <p>
+        Your data is stored securely in <strong>Google Firebase (Firestore)</strong>. Each user's
+        data is fully isolated and accessible only by the authenticated account owner. We use
+        Firebase App Check with Play Integrity to ensure only legitimate instances of StockVault
+        can access our backend. All data is transmitted over encrypted HTTPS connections.
+      </p>
+      <div class="highlight">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Your inventory data is private to your account. No one else — including us — can view it.
+      </div>
+    </div>
 
-    <h2>4. Data Sharing</h2>
-    <p>
-      We do <strong>not</strong> sell, rent, or share your personal information with third
-      parties. Your inventory data is private to your account. Firebase services are provided
-      by Google LLC and are subject to
-      <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.
-    </p>
+    <!-- 4 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>
+        </div>
+        <h2>Data Sharing</h2>
+        <span class="section-num">04</span>
+      </div>
+      <p>
+        We do <strong>not</strong> sell, rent, or share your personal information with third parties.
+        Your inventory data is entirely private to your account. Firebase services are provided by
+        Google LLC and are subject to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.
+      </p>
+    </div>
 
-    <h2>5. Data Retention &amp; Deletion</h2>
-    <p>
-      Your data is retained for as long as your account is active. You may permanently delete
-      your account and all associated data at any time from within the app via
-      <strong>Settings → Delete Account</strong>. This action is irreversible.
-    </p>
+    <!-- 5 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+        </div>
+        <h2>Data Retention &amp; Deletion</h2>
+        <span class="section-num">05</span>
+      </div>
+      <p>
+        Your data is retained for as long as your account remains active. You may permanently
+        delete your account and <strong>all associated data</strong> at any time from within the
+        app via <strong>Settings → Delete Account</strong>. This action immediately and
+        irreversibly removes all your data from our servers.
+      </p>
+    </div>
 
-    <h2>6. Children's Privacy</h2>
-    <p>
-      StockVault is not directed at children under the age of 13. We do not knowingly collect
-      personal information from children. If you believe a child has provided us with personal
-      information, please contact us so we can delete it.
-    </p>
+    <!-- 6 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h2>Children's Privacy</h2>
+        <span class="section-num">06</span>
+      </div>
+      <p>
+        StockVault is not directed at children under the age of 13. We do not knowingly collect
+        personal information from children. If you believe a child has provided personal information
+        through our app, please contact us immediately so we can remove it.
+      </p>
+    </div>
 
-    <h2>7. Changes to This Policy</h2>
-    <p>
-      We may update this Privacy Policy from time to time. Changes will be reflected by the
-      "Last updated" date above. Continued use of the app after changes constitutes acceptance
-      of the updated policy.
-    </p>
+    <!-- 7 -->
+    <div class="section">
+      <div class="section-header">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <h2>Changes to This Policy</h2>
+        <span class="section-num">07</span>
+      </div>
+      <p>
+        We may update this Privacy Policy periodically. Any changes will be reflected by the
+        "Last updated" date at the top of this page. Your continued use of StockVault after
+        changes are posted constitutes your acceptance of the revised policy.
+      </p>
+    </div>
 
-    <h2>8. Contact Us</h2>
-    <p>
-      If you have any questions or concerns about this Privacy Policy, please contact us at:<br/>
-      <a href="mailto:support@stockvault.app">support@stockvault.app</a>
-    </p>
+    <!-- Contact -->
+    <div class="contact-card">
+      <h2>Questions or Concerns?</h2>
+      <p>If you have any questions about this Privacy Policy or how your data is handled, we're here to help.</p>
+      <a class="contact-btn" href="mailto:support@stockvault.app">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        support@stockvault.app
+      </a>
+    </div>
+
   </main>
 
   <footer>
-    &copy; 2026 StockVault. All rights reserved.
+    &copy; 2026 <span>StockVault</span>. All rights reserved. &nbsp;·&nbsp; app.stockvault
   </footer>
 
   </body>
   </html>
 
-
-</body>
-</html>
